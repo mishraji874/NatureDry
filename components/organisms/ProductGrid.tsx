@@ -98,7 +98,11 @@ export function ProductGrid({
                   {/* Sale Badge */}
                   {product.isOnSale && product.originalPrice ? (
                     <Badge variant="secondary" size="sm">
-                      {calculateDiscount(product.originalPrice, product.minPrice)}% OFF
+                      {calculateDiscount(
+                        product.originalPrice,
+                        product.minPrice,
+                      )}
+                      % OFF
                     </Badge>
                   ) : null}
                 </div>
@@ -119,8 +123,8 @@ export function ProductGrid({
                       {product.minPrice === product.maxPrice
                         ? formatPrice(product.minPrice)
                         : `${formatPrice(product.minPrice)} - ${formatPrice(
-                            product.maxPrice
-                          )}`}
+                          product.maxPrice,
+                        )}`}
                     </strong>
                     {product.isOnSale && product.originalPrice && (
                       <span className={styles.originalPrice}>
@@ -147,11 +151,9 @@ export function ProductGrid({
                     variant="primary"
                     size="sm"
                     fullWidth
-                    asChild
+                  // asChild
                   >
-                    <Link href={`/products/${product.slug}`}>
-                      View Details
-                    </Link>
+                    <Link href={`/products/${product.slug}`}>View Details</Link>
                   </Button>
                   <Button
                     variant="secondary"

@@ -1,7 +1,12 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  /* config options here */
+const nextConfig = {
+  turbopack: {
+    resolveAlias: {
+      fs: { browser: "./empty.js" },
+      path: { browser: "./empty.js" },
+    },
+  },
 };
 
 export default nextConfig;

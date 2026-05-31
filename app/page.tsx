@@ -22,18 +22,22 @@ export default function Home() {
           </h1>
 
           <p className={styles.heroDescription}>
-            Premium dehydrated vegetables, fruit powders, and superfood blends — 
-            crafted to preserve peak nutrition and flavor. From farm to your pantry, 
+            Premium dehydrated vegetables, fruit powders, and superfood blends —
+            crafted to preserve peak nutrition and flavor. From farm to your pantry,
             naturally.
           </p>
 
           <div className={styles.heroActions}>
-            <button className={styles.btnPrimary} id="shop-now-btn">
-              Shop Collection →
-            </button>
-            <button className={styles.btnSecondary} id="learn-more-btn">
-              Learn More
-            </button>
+            <a href="/products">
+              <button className={styles.btnPrimary} id="shop-now-btn">
+                Shop Collection →
+              </button>
+            </a>
+            <a href="/about">
+              <button className={styles.btnSecondary} id="learn-more-btn">
+                Learn More
+              </button>
+            </a>
           </div>
 
           <div className={styles.heroStats}>
@@ -60,7 +64,7 @@ export default function Home() {
             <span className={styles.sectionTag}>Categories</span>
             <h2 className={styles.sectionTitle}>Browse Our Collection</h2>
             <p className={styles.sectionDescription}>
-              Explore our carefully curated categories of dehydrated foods designed 
+              Explore our carefully curated categories of dehydrated foods designed
               for every lifestyle and need.
             </p>
           </div>
@@ -106,7 +110,7 @@ export default function Home() {
             <span className={styles.sectionTag}>Why Choose Dehydrated?</span>
             <h2 className={styles.sectionTitle}>The Smart Way to Eat Natural</h2>
             <p className={styles.sectionDescription}>
-              Dehydrated foods retain up to 97% of their original nutrients while 
+              Dehydrated foods retain up to 97% of their original nutrients while
               lasting months longer than fresh produce.
             </p>
           </div>
@@ -140,13 +144,12 @@ export default function Home() {
             ].map((feature) => (
               <div key={feature.title} className={styles.featureCard}>
                 <div
-                  className={`${styles.featureIconWrap} ${
-                    feature.color === "Green"
+                  className={`${styles.featureIconWrap} ${feature.color === "Green"
                       ? styles.featureIconGreen
                       : feature.color === "Orange"
-                      ? styles.featureIconOrange
-                      : styles.featureIconPurple
-                  }`}
+                        ? styles.featureIconOrange
+                        : styles.featureIconPurple
+                    }`}
                 >
                   {feature.icon}
                 </div>
@@ -164,12 +167,14 @@ export default function Home() {
           <div className={styles.ctaCard}>
             <h2 className={styles.ctaTitle}>Ready to Go Natural?</h2>
             <p className={styles.ctaDescription}>
-              Join thousands of health-conscious families who trust NatureDry for 
+              Join thousands of health-conscious families who trust NatureDry for
               their daily nutrition. Free shipping on your first order.
             </p>
-            <button className={styles.btnWhite} id="cta-shop-btn">
-              Start Shopping →
-            </button>
+            <a href="/products">
+              <button className={styles.btnWhite} id="cta-shop-btn">
+                Start Shopping →
+              </button>
+            </a>
           </div>
         </div>
       </section>
@@ -184,7 +189,7 @@ export default function Home() {
                 Nature<span className={styles.footerLogoAccent}>Dry</span>
               </div>
               <p className={styles.footerBrandDesc}>
-                Premium dehydrated foods crafted from nature. We believe in 
+                Premium dehydrated foods crafted from nature. We believe in
                 preserving the goodness of whole foods — without compromise.
               </p>
             </div>
@@ -212,10 +217,10 @@ export default function Home() {
             <div className={styles.footerColumn}>
               <h4>Support</h4>
               <ul>
-                <li><a href="/shipping">Shipping Info</a></li>
-                <li><a href="/returns">Returns & Refunds</a></li>
-                <li><a href="/privacy">Privacy Policy</a></li>
-                <li><a href="/terms">Terms of Service</a></li>
+                <li><a href="/shipping-info">Shipping Info</a></li>
+                <li><a href="/returns-refunds">Returns & Refunds</a></li>
+                <li><a href="/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/terms-of-service">Terms of Service</a></li>
               </ul>
             </div>
           </div>
