@@ -1,0 +1,225 @@
+/* ============================================
+   BADGE COMPONENT
+   ============================================ */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-family: var(--font-body);
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  transition: all var(--duration-fast) var(--ease-smooth));
+  user-select: none;
+}
+
+/* ── SIZE VARIANTS ── */
+
+.size-sm {
+  padding: 0.25rem 0.75rem;
+  font-size: var(--text-xs);
+  height: 24px;
+}
+
+.size-md {
+  padding: 0.375rem 0.875rem;
+  font-size: var(--text-sm);
+  height: 28px;
+}
+
+.size-lg {
+  padding: 0.5rem 1rem;
+  font-size: var(--text-base);
+  height: 32px;
+}
+
+/* ── SOLID STYLE ── */
+
+.badgeStyle-solid {
+  box-shadow: var(--shadow-xs);
+}
+
+/* ── OUTLINE STYLE ── */
+
+.badgeStyle-outline {
+  border: 1.5px solid;
+  background-color: transparent;
+}
+
+/* ── VARIANT: DEFAULT ── */
+
+.variant-default {
+  background-color: var(--color-border);
+  color: var(--color-text-primary);
+  border-color: var(--color-border);
+}
+
+.variant-default:hover {
+  background-color: var(--color-border-light);
+}
+
+/* ── VARIANT: PRIMARY (Green) ── */
+
+.variant-primary.badgeStyle-solid {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+}
+
+.variant-primary.badgeStyle-outline {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.variant-primary:hover {
+  background-color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+}
+
+/* ── VARIANT: SECONDARY ── */
+
+.variant-secondary.badgeStyle-solid {
+  background-color: var(--color-accent-orange);
+  color: var(--color-surface);
+}
+
+.variant-secondary.badgeStyle-outline {
+  color: var(--color-accent-orange);
+  border-color: var(--color-accent-orange);
+}
+
+.variant-secondary:hover {
+  background-color: #f86f26;
+}
+
+/* ── VARIANT: SUCCESS ── */
+
+.variant-success.badgeStyle-solid {
+  background-color: var(--color-success);
+  color: var(--color-surface);
+}
+
+.variant-success.badgeStyle-outline {
+  color: var(--color-success);
+  border-color: var(--color-success);
+}
+
+.variant-success:hover {
+  background-color: #16a34a;
+}
+
+/* ── VARIANT: WARNING ── */
+
+.variant-warning.badgeStyle-solid {
+  background-color: var(--color-warning);
+  color: var(--color-text-primary);
+}
+
+.variant-warning.badgeStyle-outline {
+  color: var(--color-warning);
+  border-color: var(--color-warning);
+}
+
+.variant-warning:hover {
+  background-color: #eab308;
+}
+
+/* ── VARIANT: ERROR ── */
+
+.variant-error.badgeStyle-solid {
+  background-color: var(--color-error);
+  color: var(--color-surface);
+}
+
+.variant-error.badgeStyle-outline {
+  color: var(--color-error);
+  border-color: var(--color-error);
+}
+
+.variant-error:hover {
+  background-color: #dc2626;
+}
+
+/* ── VARIANT: INFO ── */
+
+.variant-info.badgeStyle-solid {
+  background-color: var(--color-info);
+  color: var(--color-surface);
+}
+
+.variant-info.badgeStyle-outline {
+  color: var(--color-info);
+  border-color: var(--color-info);
+}
+
+.variant-info:hover {
+  background-color: #2563eb;
+}
+
+/* ── ICON & TEXT ── */
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.text {
+  display: flex;
+  align-items: center;
+}
+
+/* ── DISMISS BUTTON ── */
+
+.dismissButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.2em;
+  height: 1.2em;
+  padding: 0;
+  margin-left: var(--space-1);
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font-size: 0.9em;
+  font-weight: 700;
+  opacity: 0.7;
+  transition: opacity var(--duration-fast) var(--ease-smooth));
+  border-radius: 50%;
+}
+
+.dismissButton:hover {
+  opacity: 1;
+}
+
+.dismissButton:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 1px;
+  border-radius: 50%;
+}
+
+/* ── RESPONSIVE ── */
+
+@media (max-width: 640px) {
+  .badge {
+    gap: var(--space-1);
+  }
+
+  .size-sm {
+    padding: 0.25rem 0.625rem;
+    font-size: var(--text-xs);
+  }
+
+  .size-md {
+    padding: 0.375rem 0.75rem;
+    font-size: var(--text-xs);
+  }
+
+  .size-lg {
+    padding: 0.5rem 0.875rem;
+    font-size: var(--text-sm);
+  }
+}

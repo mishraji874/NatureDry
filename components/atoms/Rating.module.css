@@ -1,0 +1,182 @@
+/* ============================================
+   RATING (STAR RATING) COMPONENT
+   ============================================ */
+
+.wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.rating {
+  display: inline-flex;
+  gap: 0.25em;
+  align-items: center;
+}
+
+.rating.interactive {
+  cursor: pointer;
+}
+
+/* ── SIZE VARIANTS ── */
+
+.size-sm {
+  font-size: 16px;
+}
+
+.size-md {
+  font-size: 24px;
+}
+
+.size-lg {
+  font-size: 32px;
+}
+
+/* ── STAR BUTTON ── */
+
+.star {
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-border);
+  transition: all var(--duration-fast) var(--ease-smooth));
+  font-size: 1em;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Ensure 44px touch target on mobile */
+  min-width: 2.2rem;
+  min-height: 2.2rem;
+}
+
+.star:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ── STAR STATES ── */
+
+.starIcon {
+  display: block;
+  line-height: 1;
+}
+
+.star.active {
+  color: currentColor;
+  transform: scale(1);
+}
+
+.star.filled {
+  color: inherit;
+}
+
+.star.partial .starIcon {
+  background: linear-gradient(
+    90deg,
+    currentColor 50%,
+    rgba(0, 0, 0, 0.1) 50%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.interactive .star:hover {
+  transform: scale(1.15);
+}
+
+.interactive .star:active {
+  transform: scale(1.05);
+}
+
+/* ── VARIANT: PRIMARY (Green) ── */
+
+.variant-primary {
+  color: var(--color-primary);
+}
+
+.variant-primary .star:not(.active) {
+  color: var(--color-border);
+}
+
+.variant-primary .star.active {
+  color: var(--color-primary);
+}
+
+/* ── VARIANT: SECONDARY (Orange) ── */
+
+.variant-secondary {
+  color: var(--color-accent-orange);
+}
+
+.variant-secondary .star:not(.active) {
+  color: var(--color-border);
+}
+
+.variant-secondary .star.active {
+  color: var(--color-accent-orange);
+}
+
+/* ── VARIANT: WARNING (Yellow) ── */
+
+.variant-warning {
+  color: var(--color-warning);
+}
+
+.variant-warning .star:not(.active) {
+  color: var(--color-border);
+}
+
+.variant-warning .star.active {
+  color: var(--color-warning);
+}
+
+/* ── METADATA (VALUE & COUNT) ── */
+
+.meta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.value {
+  font-weight: 600;
+  color: var(--color-text-primary);
+  min-width: 2.5rem;
+}
+
+.count {
+  color: var(--color-text-tertiary);
+}
+
+/* ── RESPONSIVE ── */
+
+@media (max-width: 640px) {
+  .size-sm {
+    font-size: 14px;
+  }
+
+  .size-md {
+    font-size: 20px;
+  }
+
+  .size-lg {
+    font-size: 28px;
+  }
+
+  .star {
+    min-width: 2rem;
+    min-height: 2rem;
+  }
+
+  .meta {
+    font-size: var(--text-xs);
+  }
+}

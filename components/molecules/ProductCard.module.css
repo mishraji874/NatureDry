@@ -1,0 +1,220 @@
+/* ============================================
+   PRODUCT CARD COMPONENT
+   ============================================ */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--duration-normal) var(--ease-smooth));
+  cursor: pointer;
+  border: 1px solid var(--color-border-light);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+  border-color: var(--color-border);
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.card:active {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ── IMAGE WRAPPER ── */
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background-color: var(--color-border-light);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-normal) var(--ease-smooth));
+}
+
+.card:hover .image {
+  transform: scale(1.05);
+}
+
+/* ── BADGES ── */
+
+.saleBadge {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  animation: scaleIn var(--duration-normal) var(--ease-out) both;
+}
+
+.outOfStock {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  color: var(--color-surface);
+  font-weight: 600;
+  font-size: var(--text-lg);
+}
+
+/* ── CONTENT ── */
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  flex-grow: 1;
+}
+
+.name {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.3;
+  margin: 0;
+  transition: color var(--duration-fast) var(--ease-smooth));
+}
+
+.card:hover .name {
+  color: var(--color-primary);
+}
+
+.description {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  margin: 0;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── RATING SECTION ── */
+
+.ratingWrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* ── PRICE SECTION ── */
+
+.priceSection {
+  margin-top: auto;
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--color-border-light);
+}
+
+.priceWrapper {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+
+.price {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.originalPrice {
+  font-size: var(--text-sm);
+  color: var(--color-text-tertiary);
+  text-decoration: line-through;
+}
+
+.discount {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-accent-orange);
+  background-color: var(--color-accent-orange-light);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+}
+
+/* ── CTA BUTTON ── */
+
+.ctaButton {
+  margin-top: var(--space-2);
+  transition: all var(--duration-normal) var(--ease-smooth));
+}
+
+.card:hover .ctaButton:not(:disabled) {
+  transform: scale(1.02);
+}
+
+/* ── RESPONSIVE ── */
+
+@media (max-width: 1024px) {
+  .content {
+    gap: var(--space-2);
+    padding: var(--space-3);
+  }
+
+  .name {
+    font-size: var(--text-base);
+  }
+
+  .price {
+    font-size: var(--text-xl);
+  }
+}
+
+@media (max-width: 640px) {
+  .card {
+    border-radius: var(--radius-md);
+  }
+
+  .content {
+    gap: var(--space-2);
+    padding: var(--space-3);
+  }
+
+  .imageWrapper {
+    aspect-ratio: 1 / 1.2;
+  }
+
+  .name {
+    font-size: var(--text-base);
+    line-height: 1.3;
+  }
+
+  .description {
+    font-size: var(--text-xs);
+    -webkit-line-clamp: 1;
+  }
+
+  .price {
+    font-size: var(--text-lg);
+  }
+
+  .saleBadge {
+    top: var(--space-2);
+    right: var(--space-2);
+  }
+
+  .card:hover {
+    transform: translateY(-2px);
+  }
+}

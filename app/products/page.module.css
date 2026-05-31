@@ -1,0 +1,37 @@
+.page {
+  min-height: 100vh;
+}
+
+.hero {
+  padding: var(--space-16) 0 var(--space-12);
+  background: linear-gradient(
+    160deg,
+    var(--color-bg) 0%,
+    var(--color-primary-bg) 45%,
+    var(--color-bg) 100%
+  );
+}
+
+.heroTag {
+  display: inline-block;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: var(--space-3);
+}
+
+.heroTitle {
+  font-size: clamp(var(--text-3xl), 4.4vw, var(--text-5xl));
+  margin-bottom: var(--space-4);
+}
+
+.heroDescription {
+  max-width: 700px;
+  font-size: var(--text-lg);
+}
+
+.catalogSection {
+  padding: 0 0 var(--space-16);
+}

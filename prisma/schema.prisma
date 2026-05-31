@@ -1,0 +1,139 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider   = "prisma-client-js"
+  engineType = "library"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String    @id @default(uuid())
+  email        String    @unique
+  passwordHash String?
+  firstName    String
+  lastName     String
+  role         String    @default("USER") // 'USER' or 'ADMIN'
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  addresses    Address[]
+  orders       Order[]
+  reviews      Review[]
+}
+
+model Address {
+  id             String  @id @default(uuid())
+  userId         String
+  type           String  // 'SHIPPING' or 'BILLING'
+  streetAddress1 String
+  streetAddress2 String?
+  city           String
+  stateProvince  String
+  postalCode     String
+  country        String
+  isDefault      Boolean @default(false)
+
+  user           User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  orders         Order[]
+}
+
+model Category {
+  id          String    @id @default(uuid())
+  name        String
+  slug        String    @unique
+  description String?
+  imageUrl    String?
+
+  products    Product[]
+}
+
+model Product {
+  id                  String   @id @default(uuid())
+  categoryId          String
+  name                String
+  slug                String   @unique
+  shortDescription    String
+  detailedDescription String
+  nutritionalInfo     String   // Stores JSON as String for SQLite compatibility
+  ingredients         String
+  isActive            Boolean  @default(true)
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  category            Category @relation(fields: [categoryId], references: [id])
+  variants            ProductVariant[]
+  images              ProductImage[]
+  reviews             Review[]
+}
+
+model ProductVariant {
+  id            String  @id @default(uuid())
+  productId     String
+  sku           String  @unique
+  weightGrams   Int
+  price         Float
+  stockQuantity Int
+
+  product       Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  orderItems    OrderItem[]
+}
+
+model ProductImage {
+  id        String  @id @default(uuid())
+  productId String
+  url       String
+  altText   String
+  isPrimary Boolean @default(false)
+  sortOrder Int
+
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+}
+
+model Order {
+  id                    String   @id @default(uuid())
+  userId                String?
+  guestEmail            String?
+  shippingAddressId     String?
+  status                String   // 'PENDING','PAID','PROCESSING','SHIPPED','DELIVERED','CANCELLED'
+  subtotal              Float
+  shippingCost          Float
+  tax                   Float
+  totalAmount           Float
+  stripeSessionId       String?  @unique
+  stripePaymentIntentId String?  @unique
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  user                  User?    @relation(fields: [userId], references: [id])
+  shippingAddress       Address? @relation(fields: [shippingAddressId], references: [id])
+  items                 OrderItem[]
+}
+
+model OrderItem {
+  id               String @id @default(uuid())
+  orderId          String
+  productVariantId String
+  quantity         Int
+  priceAtPurchase  Float
+
+  order            Order          @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productVariant   ProductVariant @relation(fields: [productVariantId], references: [id])
+}
+
+model Review {
+  id         String   @id @default(uuid())
+  productId  String
+  userId     String
+  rating     Int
+  comment    String
+  isApproved Boolean  @default(false)
+  createdAt  DateTime @default(now())
+
+  product    Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
